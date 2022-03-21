@@ -7,7 +7,8 @@ export default (req, res) => {
 
   if(questao.length === 1){
     const questaoSelect = questao[0].embaralharRespostas()
-    res.status(200).json(questaoSelect.toObject())
+    const obj = questaoSelect.responderCom(0).toObject()
+    res.status(200).json(obj)
   }else{
     res.status(404).send()
   }
