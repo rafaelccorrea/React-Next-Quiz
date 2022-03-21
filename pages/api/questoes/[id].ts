@@ -6,7 +6,7 @@ export default (req, res) => {
   const questao = questoes.filter(questao => questao.id === id)
 
   if(questao.length === 1){
-    const questaoSelect = questao[0]
+    const questaoSelect = questao[0].embaralharRespostas()
     res.status(200).json(questaoSelect.toObject())
   }else{
     res.status(404).send()
