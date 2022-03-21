@@ -5,8 +5,9 @@ export default class QuestaoModel{
     #enunciado: string;
     #resposta: RespostaModel[];
     #acertou: boolean;
+    // #respondida: boolean;
 
-    constructor(id: number, enunciado: string, resposta: RespostaModel[], acertou: boolean){
+    constructor(id: number, enunciado: string, resposta: RespostaModel[], acertou = false){
         this.#id = id
         this.#enunciado = enunciado 
         this.#resposta = resposta 
@@ -35,6 +36,15 @@ export default class QuestaoModel{
         }
 
         return false;
+    }
+
+    toObject() {
+        return {
+            id: this.#id,
+            enunciado: this.#enunciado,
+            resposta: this.#resposta.map(item => item.toObject()),
+            acertou: this.#acertou
+        }
     }
 
 }
