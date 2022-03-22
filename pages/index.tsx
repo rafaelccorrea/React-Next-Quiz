@@ -11,12 +11,11 @@ const questaoTeste = new QuestaoModel(1, 'Melhor Cor?', [
   
 ])
 
-
 export default function Home() {
 
   const [ questao, setQuestao ] = useState(questaoTeste)
 
-  function respostaFornecida(indice) {
+  function respostaFornecida(indice: number) {
     setQuestao(questao.responderCom(indice))
   }
 
