@@ -26,7 +26,7 @@ export default function Home() {
       alignItems: 'center',
       height: '100vh'
     }}>
-      <Questao valor={questaoTeste} respostaFornecida={respostaFornecida}/>
+      <Questao valor={questao} respostaFornecida={respostaFornecida}/>
     </div>
   )
 }
