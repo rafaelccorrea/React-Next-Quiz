@@ -30,6 +30,10 @@ export default class QuestaoModel{
         return this.#acertou
     }
 
+    get naoRespondida() {
+        return !this.respondida;
+    }
+    
     get respondida() {
         for(let resposta of this.#resposta) {
             if(resposta.revelada) return true

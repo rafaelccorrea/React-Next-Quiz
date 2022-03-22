@@ -1,5 +1,6 @@
 import Enunciado from "../enuciado/Enunciado";
 import Resposta from "../resposta/Resposta";
+import Temporizador from "../temporizador/Temporizador";
 import QuestaoProps from "./Model";
 import styles from "./Questao.module.css";
 
@@ -31,6 +32,7 @@ export default function Questao(props: QuestaoProps) {
   return (
     <div className={styles.questao}>
       <Enunciado texto={questao.enunciado} />
+      <Temporizador duracao={10} tempoEsgotado={props.tempoEsgotado}/>
       {renderRespostas()}
     </div>
   );
