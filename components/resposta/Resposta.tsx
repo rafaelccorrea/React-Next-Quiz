@@ -4,7 +4,7 @@ import styles from './Resposta.module.css';
 export default function Resposta (props: RespostaProps) {
     const resposta = props.valor
     return (
-        <div className={styles.resposta}>
+        <div className={styles.resposta} onClick={() => props.respostaFornecida(props.indice)}>
             <div className={styles.conteudo}>
                 <div className={styles.frente}>
                     <div className={styles.letra}

@@ -1,6 +1,6 @@
 import Enunciado from "../enuciado/Enunciado";
 import Resposta from "../resposta/Resposta";
-import QuestaoProps from "./model";
+import QuestaoProps from "./Model";
 import styles from "./Questao.module.css";
 
 const letras = [
@@ -22,6 +22,7 @@ export default function Questao(props: QuestaoProps) {
           indice={i}
           letra={letras[i].valor}
           corFundoLetra={letras[i].cor}
+          respostaFornecida={props.respostaFornecida}
         />
       );
     });

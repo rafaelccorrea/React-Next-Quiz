@@ -4,7 +4,7 @@ import styles from './Enunciado.module.css';
 export default function Enunciado(props: EnunciadoProps){
     return (
         <div className={styles.enunciado}>
-            <span className="texto">
+            <span className={styles.texto}>
                 {props.texto}
             </span>
         </div>

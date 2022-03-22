@@ -5,4 +5,5 @@ export default interface RespostaProps {
     indice: number;
     letra: string;
     corFundoLetra: string;
+    respostaFornecida: (indice: number) => void
 }
