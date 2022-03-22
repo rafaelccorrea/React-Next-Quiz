@@ -4,5 +4,5 @@ export default interface RespostaProps {
     valor: RespostaModel;
     indice: number;
     letra: string;
-    corLetra: string;
+    corFundoLetra: string;
 }
