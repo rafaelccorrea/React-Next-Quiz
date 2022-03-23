@@ -3,7 +3,7 @@ import styles from "./Resposta.module.css";
 
 export default function Resposta(props: RespostaProps) {
   const resposta = props.valor;
-  const respostaRevelada = resposta.revelada ? styles.respostaRevelada : "";
+  const respostaRevelada = resposta.revelada ? styles.respostaRevelada : '';
   return (
     <div
       className={styles.resposta}

@@ -15,7 +15,7 @@
     transform-style: preserve-3d;
 }
 
-.respostaRevelada .conteudo {
+.respostaRevelada.conteudo {
     transform: rotateY(180deg);
 }
 
