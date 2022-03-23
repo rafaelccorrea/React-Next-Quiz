@@ -42,6 +42,11 @@ export default class QuestaoModel{
         return false;
     }
 
+    static criarObj(obj: QuestaoModel): QuestaoModel {
+        const respostas = obj.resposta.map(res => RespostaModel.criarObj(res))
+        return new QuestaoModel(obj.id, obj.enunciado, respostas, obj.acertou)
+    }
+
     responderCom(indice: number): QuestaoModel {
         const acertou = this.#resposta[indice]?.certa
         const respostas = this.#resposta.map((res, i) => {
