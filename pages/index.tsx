@@ -1,50 +1,76 @@
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Questionario from "../components/questionario/Questionario";
 import QuestaoModel from "../model/questao";
-import RespostaModel from "../model/resposta";
 
-const questaoTeste = new QuestaoModel(1, "Melhor Cor?", [
-  RespostaModel.errada("Verde"),
-  RespostaModel.errada("Amarela"),
-  RespostaModel.errada("Azul"),
-  RespostaModel.certa("Preta"),
-]);
-
-const BASE_URL = "http://localhost:3000/api"
+const BASE_URL = "http://localhost:3000/api";
 
 export default function Home() {
-  const [questao, setQuestao] = useState<QuestaoModel>(questaoTeste);
+  const router = useRouter();
+
+  const [questao, setQuestao] = useState<QuestaoModel>();
   const [idsQuest, setIdsQuest] = useState<number[]>([]);
+  const [respostaCerta, setRespostaCerta] = useState<number>(0);
 
   async function carregarGetIds() {
-    const resp = await fetch(`${BASE_URL}/questionario`)
+    const resp = await fetch(`${BASE_URL}/questionario`);
     const idsQuest = await resp.json();
     setIdsQuest(idsQuest);
   }
 
-  async function carregarIdsQuestao( idQuestao: number) {
-    const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`)
+  async function carregarIdsQuestao(idQuestao: number) {
+    const resp = await fetch(`${BASE_URL}/questoes/${idQuestao}`);
     const json = await resp.json();
+    const newQuest = QuestaoModel.criarObj(json);
+    setQuestao(newQuest);
   }
 
   useEffect(() => {
-    carregarGetIds()
-  }, [])
+    carregarGetIds();
+  }, []);
 
   useEffect(() => {
-    idsQuest.length > 0 && carregarIdsQuestao(idsQuest[0])
-  }, [idsQuest])
+    idsQuest.length > 0 && carregarIdsQuestao(idsQuest[0]);
+  }, [idsQuest]);
 
-  function questaoRespondida(questao: QuestaoModel) {}
+  function questaoRespondida(questao: QuestaoModel) {
+    setQuestao(questao);
+    const acertou = questao.acertou;
+    setRespostaCerta(respostaCerta + (acertou ? 1 : 0));
+  }
 
-  function proximo() {}
+  function proximaIdPergunta() {
+    const nextIndice = idsQuest.indexOf(questao.id) + 1;
+    return idsQuest[nextIndice];
+  }
 
-  return (
+  function NextproximoPasso() {
+    const proximoId = proximaIdPergunta();
+    proximoId ? proximaQuestao(proximoId) : finalizar();
+  }
+
+  function proximaQuestao(proximoId: number) {
+    carregarIdsQuestao(proximoId);
+  }
+
+  function finalizar() {
+    router.push({
+      pathname: "/resultado",
+      query: {
+        total: idsQuest.length,
+        certa: respostaCerta,
+      },
+    });
+  }
+
+  return questao ? (
     <Questionario
       questao={questao}
-      ultima={true}
+      ultima={proximaIdPergunta() === undefined}
       questaoRespondida={questaoRespondida}
-      proximo={proximo}
+      proximo={NextproximoPasso}
     />
+  ) : (
+    false
   );
 }
