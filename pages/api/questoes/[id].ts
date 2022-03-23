@@ -1,7 +1,7 @@
 import questoes from "../database";
 
 /* eslint-disable import/no-anonymous-default-export */
-export default (req, res) => {
+export default function questionario(req, res) {
   const id = +req.query.id;
   const questao = questoes.filter(questao => questao.id === id)
 
