@@ -7,9 +7,9 @@ export default function questionario(req, res) {
 
   if(questao.length === 1){
     const questaoSelect = questao[0].embaralharRespostas()
-    return res.status(200).json(questaoSelect.toObject())
+    res.status(200).json(questaoSelect.toObject())
   }else{
-    return res.status(404).send()
+    res.status(404).send()
   }
-  return res.status(200).json(questoes[0].toObject());
+  res.status(200).json(questoes[0].toObject());
 };
