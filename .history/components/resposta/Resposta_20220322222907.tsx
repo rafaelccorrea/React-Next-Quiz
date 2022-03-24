@@ -1,4 +1,4 @@
-import RespostaProps from "./model";
+import RespostaProps from "./Model";
 import styles from "./Resposta.module.css";
 
 export default function Resposta(props: RespostaProps) {

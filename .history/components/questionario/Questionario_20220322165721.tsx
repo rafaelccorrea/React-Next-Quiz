@@ -1,4 +1,4 @@
-import QuestionarioProps from "./model";
+import QuestionarioProps from "./Model";
 import styles from "./Questionario.module.css";
 import Botao from "./../botao/Botao";
 import Questao from "../questao/Questao";

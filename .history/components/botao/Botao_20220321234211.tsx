@@ -1,4 +1,4 @@
-import BotaoProps from "./model";
+import BotaoProps from "./Model";
 import styles from "./Botao.module.css";
 import Link from "next/link";
 

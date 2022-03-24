@@ -1,4 +1,4 @@
-import EnunciadoProps from "./model";
+import EnunciadoProps from "./Model";
 import styles from './Enunciado.module.css';
 
 export default function Enunciado(props: EnunciadoProps){

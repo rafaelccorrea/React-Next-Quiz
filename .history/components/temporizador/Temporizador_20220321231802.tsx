@@ -1,4 +1,4 @@
-import TemporizadorProps from './model'
+import TemporizadorProps from './Model'
 import styles from './Temporizador.module.css'
 import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 

@@ -1,5 +1,5 @@
 import styles from './Estatistica.module.css';
-import EstatisticaProps from './model';
+import EstatisticaProps from './Model';
 
 export default function Estatistica(props: EstatisticaProps) {
     return (
